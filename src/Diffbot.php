@@ -16,6 +16,7 @@
 namespace Mishbah\Diffbot;
 
 use Mishbah\Diffbot\Exceptions\DiffbotException;
+use GuzzleHttp\Client;
 
 /**
  * Class Diffbot
@@ -43,6 +44,11 @@ class Diffbot
      * @var string The instance token, settable once per new instance
     */
     protected $instanceToken;
+
+    /**
+     * @var Client The HTTP clients to perform requests with
+     */
+    protected $client;
 
     /**
      * Create a new Diffbot Instance
@@ -98,5 +104,97 @@ class Diffbot
             throw new \InvalidArgumentException($tokenToShort);
         }
         return true;
+    }
+
+    /**
+     * Sets the client to be used for querying the API endpoints
+     *
+     * @param Client $client
+     * @return $this
+     */
+    public function setHttpClient(Client $client = null)
+    {
+        if ($client === null) {
+            $client = new Client();
+        }
+        $this->client = $client;
+        return $this;
+    }
+
+    /**
+     * Returns either the instance of the Guzzle client that has been defined, or null
+     * @return Client|null
+     */
+    public function getHttpClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Creates a Product API interface
+     *
+     * @param $url string Url to analyze
+     * @return Product
+     */
+    public function createProductAPI($url)
+    {
+        $api = new Product($url);
+
+        if (!$this->getHttpClient()) {
+            $this->setHttpClient();
+        }
+
+        return $api->registerDiffbot($this);
+    }
+
+    /**
+     * Creates an Article API interface
+     *
+     * @param $url string Url to analyze
+     * @return Article
+     */
+    public function createArticleAPI($url)
+    {
+        $api = new Article($url);
+
+        if (!$this->getHttpClient()) {
+            $this->setHttpClient();
+        }
+
+        return $api->registerDiffbot($this);
+    }
+
+    /**
+     * Creates an Image API interface
+     *
+     * @param $url string Url to analyze
+     * @return Image
+     */
+    public function createImageAPI($url)
+    {
+        $api = new Image($url);
+
+        if (!$this->getHttpClient()) {
+            $this->setHttpClient();
+        }
+
+        return $api->registerDiffbot($this);
+    }
+
+    /**
+     * Creates an Analyze API interface
+     *
+     * @param $url string Url to analyze
+     * @return Analyze
+     */
+    public function createAnalyzeAPI($url)
+    {
+        $api = new Analyze($url);
+
+        if (!$this->getHttpClient()) {
+            $this->setHttpClient();
+        }
+
+        return $api->registerDiffbot($this);
     }
 }
