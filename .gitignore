@@ -33,3 +33,4 @@ nb-configuration.xml
 # SublimeText project files
 /*.sublime-project
 *.sublime-workspace
+index.php
