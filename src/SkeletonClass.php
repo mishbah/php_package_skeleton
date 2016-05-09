@@ -1,7 +1,26 @@
 <?php
+/**
+ * SkeletonClass.php
+ * PHP version 5.6
+ *
+ * @category File
+ * @package  Diffboot
+ * @author   mishbah <misbah.qadri@gmail.com>
+ * @license  LICENSE.md MIT License
+ * @link     http://google.com
+ */
 
 namespace Mishbah\Diffbot;
 
+/**
+ * Ini adalah skeleton class
+ *
+ * @category Class
+ * @package  Diffboot
+ * @author   mishbah <misbah.qadri@gmail.com>
+ * @license  LICENSE.md MIT License
+ * @link     http://google.com
+ */
 class SkeletonClass
 {
     /**
