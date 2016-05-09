@@ -8,7 +8,14 @@ namespace Mishbah\Diffbot\Abstracts;
  */
 abstract class Api
 {
-    /** @var int Timeout value in ms - defaults to 30s if empty */
+    /**
+     * @var  Diffbot The parent class which spawned this one
+     */
+    protected $diffbot;
+
+    /**
+     * @var int Timeout value in ms - defaults to 30s if empty
+     */
     protected $timeout = 30000;
 
     /**
@@ -35,6 +42,18 @@ abstract class Api
         }
 
         $this->timeout = $timeout;
+
+        return $this;
+    }
+
+    /**
+     * Sets the Diffbot instance on the child class
+     * Used to later fetch the token, HTTP client, EntityFactory, etc
+     * @param Diffbot $d
+     * @return $this
+     */
+    public function registerDiffbot(Diffbot $d) {
+        $this->diffbot = $d;
 
         return $this;
     }
