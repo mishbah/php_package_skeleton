@@ -4,7 +4,7 @@
  * PHP version 5.6
  *
  * @category File
- * @package  Diffboot
+ * @package  Mishbah\Diffboot
  * @author   mishbah <misbah.qadri@gmail.com>
  * @license  LICENSE.md MIT License
  * @link     http://google.com
@@ -16,7 +16,7 @@ namespace Mishbah\Diffbot;
  * Ini adalah skeleton class
  *
  * @category Class
- * @package  Diffboot
+ * @package  Mishbah\Diffboot
  * @author   mishbah <misbah.qadri@gmail.com>
  * @license  LICENSE.md MIT License
  * @link     http://google.com
